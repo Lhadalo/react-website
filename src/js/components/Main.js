@@ -2,6 +2,8 @@ import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
+import { TransitionGroup, CSSTransition } from 'react-transition-group';
+
 // Grommet
 import App from 'grommet/components/App';
 import Article from 'grommet/components/Article';
@@ -42,20 +44,26 @@ class Main extends Component {
     return (
       <App centered={true}>
         <Router>
-          <Article 
-            priority={priority}
-            onResponsive={this._onResponsive}>
-            {nav}
-            <Section>
-              <Switch>
-                <Route exact={true} path='/' component={Home} />
-                <Route path='/home' component={Home} />
-                <Route path='/photos' component={Photos} />
-                <Route path='/projects' component={Projects} />
-                <Route path='/contact' component={Contact} />
-              </Switch>
-            </Section>
-          </Article>
+          <Route render={({ location }) => (
+            <Article 
+              priority={priority}
+              onResponsive={this._onResponsive}>
+              {nav}
+              <Section>
+                <TransitionGroup>
+                  <CSSTransition key={location.key} classNames='fade' timeout={300}>
+                    <Switch location={location}>
+                      <Route exact={true} path='/' component={Home} />
+                      <Route exact={true} path='/home' component={Home} />
+                      <Route exact={true} path='/photos' component={Photos} />
+                      <Route exact={true} path='/projects' component={Projects} />
+                      <Route exact={true} path='/contact' component={Contact} />
+                    </Switch>
+                  </CSSTransition>
+                </TransitionGroup>
+              </Section>
+            </Article>
+          )} />
         </Router>
       </App>
     );
