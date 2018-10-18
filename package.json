@@ -14,6 +14,7 @@
     "start": "npm run dist-server && npm run dist && node ./dist-server/server.js"
   },
   "dependencies": {
+    "animated": "^0.2.2",
     "axios": "^0.18.0",
     "body-parser": "^1.15.2",
     "compression": "^1.6.2",
