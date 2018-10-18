@@ -1,18 +1,17 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch, withRouter } from 'react-router-dom';
 
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
 
 // Grommet
 import App from 'grommet/components/App';
 import Article from 'grommet/components/Article';
-import Section from 'grommet/components/Section';
-
 // Screens
 import Home from '../screens/Home';
 import Photos from '../screens/Photos';
 import PhotosShow from '../screens/PhotosGallery';
+import PhotoViewer from './PhotoViewer';
 import Projects from '../screens/Projects';
 import Contact from '../screens/Contact';
 
@@ -30,42 +29,29 @@ class Main extends Component {
   }
 
   render() {
-    const {
-      nav: { active: navActive, enabled: navEnabled, responsive }
-    } = this.props;
-
-    const includeNav = (navActive && navEnabled);
-    let nav;
-    if (includeNav) {
-      nav = <NavigationBar />;
-    }
-
-    const priority = (includeNav && responsive === 'single' ? 'left' : 'right');
-
+    const Routes = withRouter(({ location }) => (
+      <TransitionGroup exit={false}>
+        <CSSTransition key={location.key} classNames='fade' timeout={300}>
+          <Switch location={location} >
+            <Route exact={true} path='/' component={Home} />
+            <Route path='/home' component={Home} />
+            <Route path='/photos/gallery/:id' component={PhotosShow} />
+            <Route path='/photos/photo/:id' component={PhotoViewer} />
+            <Route path='/photos' component={Photos} />
+            <Route path='/projects' component={Projects} />
+            <Route path='/contact' component={Contact} />
+          </Switch>
+        </CSSTransition>
+      </TransitionGroup>
+    ));
+    
     return (
-      <App centered={true}>
+      <App centered={false}>
         <Router>
-          <Route render={({ location }) => (
-            <Article 
-              priority={priority}
-              onResponsive={this._onResponsive}>
-              {nav}
-              <Section pad='none'>
-                <TransitionGroup>
-                  <CSSTransition key={location.key} classNames='fade' timeout={300}>
-                    <Switch location={location}>
-                      <Route exact={true} path='/' component={Home} />
-                      <Route path='/home' component={Home} />
-                      <Route path='/photos/gallery/:id' component={PhotosShow} />
-                      <Route path='/photos' component={Photos} />
-                      <Route path='/projects' component={Projects} />
-                      <Route path='/contact' component={Contact} />
-                    </Switch>
-                  </CSSTransition>
-                </TransitionGroup>
-              </Section>
-            </Article>
-          )} />
+          <Article>
+            <NavigationBar />
+            <Routes />
+          </Article>
         </Router>
       </App>
     );
