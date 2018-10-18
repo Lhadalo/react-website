@@ -1,4 +1,4 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import _ from 'lodash';
@@ -38,7 +38,6 @@ class Photos extends Component {
 	}
 	
 	render() {
-		
 		return (
 			<Section pad='medium'>
 				<Box pad='medium'>

@@ -1,11 +1,8 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import Article from 'grommet/components/Article';
 import Section from 'grommet/components/Section';
-
 import Anchor from 'grommet/components/Anchor';
-import Heading from 'grommet/components/Heading';
 import Headline from 'grommet/components/Headline';
 import Split from 'grommet/components/Split';
 import Box from 'grommet/components/Box';
@@ -45,23 +42,6 @@ class Home extends Component {
     );
   }
 }
-
-Home.defaultProps = {
-	nav: {
-		active: true, // start with nav active
-		enabled: true, // start with nav disabled
-		responsive: 'multiple'
-	}
-};
-
-Home.propTypes = {
-	nav: PropTypes.shape({
-	items: PropTypes.arrayOf(PropTypes.shape({
-		path: PropTypes.string,
-		label: PropTypes.string
-	}))
-	})
-};
 
 function mapStateToProps(state) {
   return { nav: state.nav };

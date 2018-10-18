@@ -1,4 +1,4 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { BrowserRouter as Router, Route, Switch, withRouter } from 'react-router-dom';
 
@@ -15,7 +15,6 @@ import PhotoViewer from './PhotoViewer';
 import Projects from '../screens/Projects';
 import Contact from '../screens/Contact';
 
-import { navResponsive } from '../actions/nav';
 import NavigationBar from './NavigationBar';
 
 class Main extends Component {
@@ -24,9 +23,6 @@ class Main extends Component {
     this._onResponsive = this._onResponsive.bind(this);
   }
 
-  _onResponsive(responsive) {
-    this.props.dispatch(navResponsive(responsive));
-  }
 
   render() {
     const Routes = withRouter(({ location }) => (
@@ -57,23 +53,6 @@ class Main extends Component {
     );
   }
 }
-
-Main.defaultProps = {
-  nav: {
-    active: true, // start with nav active
-    enabled: true, // start with nav disabled
-    responsive: 'multiple'
-  }
-};
-
-Main.propTypes = {
-  dispatch: PropTypes.func.isRequired,
-  nav: PropTypes.shape({
-    active: PropTypes.bool,
-    enabled: PropTypes.bool,
-    responsive: PropTypes.string
-  })
-};
 
 function mapStateToProps(state) {
   return { nav: state.nav };

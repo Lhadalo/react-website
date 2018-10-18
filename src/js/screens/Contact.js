@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Field, reduxForm } from 'redux-form';
 
 import Section from 'grommet/components/Section';
 import Box from 'grommet/components/Box';
-import Paragraph from 'grommet/components/Paragraph';
 import Title from 'grommet/components/Title';
 import Split from 'grommet/components/Split';
 import Anchor from 'grommet/components/Anchor';
-import { Field, reduxForm } from 'redux-form';
 import Form from 'grommet/components/Form';
 import FormFields from 'grommet/components/FormFields';
 import FormField from 'grommet/components/FormField';
@@ -106,7 +105,6 @@ class Contact extends Component {
 function validate(values) {
   const errors = {};
   
-  // Validate the inputs from 'values'
   if (!values.name) {
       errors.name = 'Please enter your name';
   }
@@ -118,8 +116,6 @@ function validate(values) {
       errors.message = 'Please enter your message';
   }
 
-  // If errors is empty, the form is fine to submit
-  // If errors has any properties, redux form assumes form is invalid
   return errors;
 }
 

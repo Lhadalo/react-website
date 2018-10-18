@@ -8,9 +8,7 @@ import Paragraph from 'grommet/components/Paragraph';
 import Anchor from 'grommet/components/Anchor';
 import Title from 'grommet/components/Title';
 import Image from 'grommet/components/Image';
-import Layer from 'grommet/components/Layer';
 import Section from 'grommet/components/Section';
-
 import BackIcon from 'grommet/components/icons/base/LinkPrevious';
 
 import PhotoViewer from '../components/PhotoViewer';

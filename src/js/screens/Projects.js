@@ -3,7 +3,6 @@ import React, { Component } from 'react';
 import Box from 'grommet/components/Box';
 import Headline from 'grommet/components/Headline';
 import Paragraph from 'grommet/components/Paragraph';
-import Split from 'grommet/components/Split';
 import Section from 'grommet/components/Section';
 
 class Projects extends Component {

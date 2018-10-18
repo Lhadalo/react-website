@@ -1,7 +1,4 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
-
-import { browserHistory } from 'react-router-dom';
 
 import Section from 'grommet/components/Section';
 import Box from 'grommet/components/Box';
@@ -11,11 +8,6 @@ import Image from 'grommet/components/Image';
 import CloseIcon from 'grommet/components/icons/base/Close';
 
 class PhotoViewer extends Component {
-
-	componentDidMount() {
-		console.log(window);
-	}
-
 	render() {
 		return (
 			<Section className='PhotoViewer'>

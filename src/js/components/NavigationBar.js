@@ -1,12 +1,10 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 // Grommet
 import Header from 'grommet/components/Header';
 import Anchor from 'grommet/components/Anchor';
 import Box from 'grommet/components/Box';
-import Title from 'grommet/components/Title';
-
 
 // Icons
 import Logo from 'grommet/components/icons/base/BrandGrommetPath';
@@ -64,24 +62,6 @@ class NavigationBar extends Component {
 		);
 	}
 }
-
-NavigationBar.defaultProps = {
-	nav: {
-		active: true, // start with nav active
-		enabled: true, // start with nav disabled
-		responsive: 'multiple'
-	}
-};
-
-NavigationBar.propTypes = {
-	dispatch: PropTypes.func.isRequired,
-	nav: PropTypes.shape({
-	items: PropTypes.arrayOf(PropTypes.shape({
-		path: PropTypes.string,
-		label: PropTypes.string
-	}))
-	})
-};
 
 function mapStateToProps(state) {
 	return { nav: state.nav };

@@ -1,4 +1,4 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 
@@ -33,21 +33,6 @@ class NavControl extends Component {
 		return result;
 	}
 }
-
-NavControl.defaultProps = {
-	name: undefined,
-	nav: {
-		active: true, // start with nav active
-		enabled: true, // start with nav disabled
-		responsive: 'multiple'
-	}
-};
-  
-NavControl.propTypes = {
-	dispatch: PropTypes.func.isRequired,
-	name: PropTypes.string,
-	nav: PropTypes.object
-};
 
 const select = state => ({
 	nav: state.nav
