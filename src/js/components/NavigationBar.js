@@ -51,7 +51,7 @@ class NavigationBar extends Component {
 				</Box>
 				));
 		return (
-			<Header colorIndex='neutral-3' fixed={true} size='small' float={false}>
+			<Header colorIndex='neutral-3' fixed={true} size='small'>
 		
 				<Box pad='small'>
 					<Anchor path='/' icon={<Logo colorIndex='brand' size='medium' />} label='ola dahl.' primary={true} align='start' />	

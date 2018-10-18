@@ -8,7 +8,10 @@ const initialState = {};
 
 const handlers = {
 	[FETCH_IMAGE]: (state, action) => {
-		console.log('Fetch Image');
+		const photo = action.payload.data;
+		const newState = { ...state };
+		newState[photo.id] = photo;
+		return newState;
 	},
 	[FETCH_IMAGES]: (state, action) => {
 		return _.mapKeys(action.payload.data, 'id');

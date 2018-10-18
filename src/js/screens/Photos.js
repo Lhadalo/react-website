@@ -23,10 +23,10 @@ class Photos extends Component {
 			const description = photo.content.rendered;
 			const subDesc = description.substring(3, description.length - 5);
 			return (
-				<Anchor className='GalleryAnchor' path='#' key={photo.id}>
+				<Anchor className='GalleryAnchor' path={`/photos/gallery/${photo.id}`} key={photo.id}>
 					<Box className='TileBox' align='center' direction='row'>
 						<Image className='TileImage' src={photo.acf.photos_description[0].photo.sizes.thumbnail} />
-						<Box align='start' flex='start' full={true} pad='small'>
+						<Box align='start' full={true} pad='small'>
 							<Paragraph margin='none'><strong>{photo.title.rendered}</strong></Paragraph>
 							<Paragraph margin='none'>{subDesc}</Paragraph>
 						</Box>						

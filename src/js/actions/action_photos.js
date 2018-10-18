@@ -16,6 +16,15 @@ export function fetchImagesDescription() {
 	};
 }
 
+export function fetchImage(id) {
+	const request = axios.get(`${ROOT_URL}/photos/${id}`);
+
+	return {
+		type: FETCH_IMAGE,
+		payload: request
+	};
+}
+
 export function fetchImages() {
 	const request = axios.get(`${ROOT_URL}/photos`);
 

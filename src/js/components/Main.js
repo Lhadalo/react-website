@@ -12,6 +12,7 @@ import Section from 'grommet/components/Section';
 // Screens
 import Home from '../screens/Home';
 import Photos from '../screens/Photos';
+import PhotosShow from '../screens/PhotosGallery';
 import Projects from '../screens/Projects';
 import Contact from '../screens/Contact';
 
@@ -54,10 +55,11 @@ class Main extends Component {
                   <CSSTransition key={location.key} classNames='fade' timeout={300}>
                     <Switch location={location}>
                       <Route exact={true} path='/' component={Home} />
-                      <Route exact={true} path='/home' component={Home} />
-                      <Route exact={true} path='/photos' component={Photos} />
-                      <Route exact={true} path='/projects' component={Projects} />
-                      <Route exact={true} path='/contact' component={Contact} />
+                      <Route path='/home' component={Home} />
+                      <Route path='/photos/gallery/:id' component={PhotosShow} />
+                      <Route path='/photos' component={Photos} />
+                      <Route path='/projects' component={Projects} />
+                      <Route path='/contact' component={Contact} />
                     </Switch>
                   </CSSTransition>
                 </TransitionGroup>
