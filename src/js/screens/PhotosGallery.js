@@ -13,7 +13,7 @@ import Section from 'grommet/components/Section';
 
 import BackIcon from 'grommet/components/icons/base/LinkPrevious';
 
-import PhotoViewer from './PhotoViewer';
+import PhotoViewer from '../components/PhotoViewer';
 
 import { fetchImage } from '../actions/action_photos';
 
