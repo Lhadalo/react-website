@@ -2,6 +2,8 @@ import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 
 import Article from 'grommet/components/Article';
+import Section from 'grommet/components/Section';
+
 import Anchor from 'grommet/components/Anchor';
 import Heading from 'grommet/components/Heading';
 import Headline from 'grommet/components/Headline';
@@ -20,18 +22,16 @@ class Home extends Component {
     ));
     
     return (
-        <Box pad='medium'>
+        <Section>
           <Box align='center'>
-            <Headline >
-              ola dahl.
-            </Headline>
+              <Headline >
+                ola dahl.
+              </Headline>
           </Box>
-          
-          <Split>
+          <Split fixed={false}>
             <Box align='center' direction='column'>
-                {links} 
+              {links} 
             </Box>
-
             <Box align='center'>
               <Paragraph size='large'>
                 Cras mattis consectetur purus sit amet fermentum. 
@@ -41,7 +41,7 @@ class Home extends Component {
               </Paragraph>
             </Box>
           </Split>
-        </Box>
+        </Section>
     );
   }
 }

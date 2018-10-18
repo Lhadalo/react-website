@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
+import Section from 'grommet/components/Section';
 import Box from 'grommet/components/Box';
 import Paragraph from 'grommet/components/Paragraph';
 import Title from 'grommet/components/Title';
@@ -78,8 +79,9 @@ class Contact extends Component {
 
   render() {
     return (
+      <Section>
         <Box pad='medium' responsive={true}>
-          <Split showOnResponsive='both'>
+          <Split showOnResponsive='both' fixed={false}>
             <Box align='center' responsive={true}>
               {this._renderContactItem('email', 
                 [{ path: 'mailto:oladahl.lel@gmail.com', label: 'oladahl.lel@gmail.com' }])}
@@ -94,9 +96,8 @@ class Contact extends Component {
               {this._renderContactForm()}
             </Box>
           </Split>
-          
         </Box>
-      
+      </Section>
     );
   }
 }

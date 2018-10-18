@@ -9,8 +9,11 @@ import Anchor from 'grommet/components/Anchor';
 import Title from 'grommet/components/Title';
 import Image from 'grommet/components/Image';
 import Layer from 'grommet/components/Layer';
+import Section from 'grommet/components/Section';
 
 import BackIcon from 'grommet/components/icons/base/LinkPrevious';
+
+import PhotoViewer from './PhotoViewer';
 
 import { fetchImage } from '../actions/action_photos';
 
@@ -19,19 +22,25 @@ class PhotosShow extends Component {
 		super();
 		this.state = {
 			layerActive: false,
-			imageUrl: null
+			imageUrl: ''
 		};
+
+		this.hideImage = this._hideImage.bind(this);
+		this._navigateBack = this._navigateBack.bind(this);
 	}
 
 	componentWillMount() {
-		console.log(this.props);
 		this.props.fetchImage(this.props.match.params.id);
+	}
+
+	_navigateBack() {
+		this.props.history.goBack();
 	}
 
 	_renderNavigationRow() {
 		return (
 			<Box direction='row' align='baseline' pad='medium'>
-				<Anchor className='BackAnchor' primary={true} label='Back' icon={<BackIcon />} />
+				<Anchor className='BackAnchor' primary={true} label='Back' icon={<BackIcon />} onClick={this._navigateBack} />
 				<Title>{(this.props.photo) ? this.props.photo.title.rendered : ''}</Title>
 			</Box>
 		);
@@ -71,30 +80,24 @@ class PhotosShow extends Component {
 		});
 	}
 
-	_renderLayer() {
-		if ((this.state.layerActive)) {
-			return (
-				<Layer 
-				className='ModalLayer'
-				closer={true} 
-				flush={true}
-				overlayClose={true} 
-				onClose={() => { this.setState({ layerActive: false }); }}>
-					<Box>
-						<Image fit='contain' full={true} src={this.state.imageUrl} />						
-					</Box>
-					{/* <span style={{ margin: '50px' }}>{this.state.imageUrl}</span> */}
-				</Layer>
-			);
+	_hideImage() {
+		this.setState({ 
+			layerActive: false,
+		});
+	}
+
+	_renderPhotoViewer() {
+		if (this.state.layerActive) {
+			return <PhotoViewer url={this.state.imageUrl} close={this.hideImage} />;	
 		}
 		return null;
 	}
 
 	render() {
 		return (
-			<Box>
-				{this._renderLayer()}
-				<Split flex='right' fixed={true}>
+			<Section>
+				{this._renderPhotoViewer()}
+				<Split flex='right' fixed={false}>
 					<Box pad='medium'>
 						{this._renderNavigationRow()}
 						{this._renderGalleryDescription()}
@@ -103,7 +106,7 @@ class PhotosShow extends Component {
 						{this._renderImages()}
 					</Box>
 				</Split>
-			</Box>
+			</Section>
 		);
 	}
 }

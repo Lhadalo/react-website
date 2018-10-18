@@ -22,6 +22,7 @@ class Photos extends Component {
 		return _.map(this.props.photos, (photo) => {
 			const description = photo.content.rendered;
 			const subDesc = description.substring(3, description.length - 5);
+			
 			return (
 				<Anchor className='GalleryAnchor' path={`/photos/gallery/${photo.id}`} key={photo.id}>
 					<Box className='TileBox' align='center' direction='row'>
@@ -37,45 +38,47 @@ class Photos extends Component {
 	}
 	
 	render() {
+		
 		return (
-		<Box pad='medium'>
-			<Section pad='medium' >
-				<span>Photos from my life I take with my Pixel 2 phone.</span>
-			</Section>
-			
 			<Section pad='medium'>
-				<h4><strong>Galleries</strong></h4>
-				<Tiles className='GalleryTiles' flush={true}>
-					{this._renderGalleryTiles()}
-				</Tiles>
-				<hr />
+				<Box pad='medium'>
+					<span>Photos from my life I take with my Pixel 2 phone.</span>	
+				</Box>
+
+				<Box pad='medium'>
+					<h4><strong>Galleries</strong></h4>
+					<Tiles className='GalleryTiles' flush={true}>
+						{this._renderGalleryTiles()}
+					</Tiles>
+					<hr />
+				</Box>
+
+				<Box>
+					<Tiles fill={true} flush={false}>
+						<Tile basis='1/4'>
+							<Image src='https://static.vinepair.com/wp-content/uploads/2017/06/ind-internal.jpg' />
+						</Tile>
+						<Tile basis='1/4'>
+							<Image src='https://static.vinepair.com/wp-content/uploads/2017/06/ind-internal.jpg' />
+						</Tile>
+						<Tile basis='1/4'>
+							<Image src='https://static.vinepair.com/wp-content/uploads/2017/06/ind-internal.jpg' />
+						</Tile>
+						<Tile basis='1/4'>
+							<Image src='https://static.vinepair.com/wp-content/uploads/2017/06/ind-internal.jpg' />
+						</Tile>
+						<Tile basis='1/4'>
+							<Image src='https://static.vinepair.com/wp-content/uploads/2017/06/ind-internal.jpg' />
+						</Tile>
+						<Tile basis='1/4'>
+							<Image src='https://static.vinepair.com/wp-content/uploads/2017/06/ind-internal.jpg' />
+						</Tile>
+						<Tile basis='1/4'>
+							<Image src='https://static.vinepair.com/wp-content/uploads/2017/06/ind-internal.jpg' />
+						</Tile>
+					</Tiles>
+				</Box>
 			</Section>
-			<Section>
-				<Tiles fill={true} flush={false}>
-					<Tile basis='1/4'>
-						<Image src='https://static.vinepair.com/wp-content/uploads/2017/06/ind-internal.jpg' />
-					</Tile>
-					<Tile basis='1/4'>
-						<Image src='https://static.vinepair.com/wp-content/uploads/2017/06/ind-internal.jpg' />
-					</Tile>
-					<Tile basis='1/4'>
-						<Image src='https://static.vinepair.com/wp-content/uploads/2017/06/ind-internal.jpg' />
-					</Tile>
-					<Tile basis='1/4'>
-						<Image src='https://static.vinepair.com/wp-content/uploads/2017/06/ind-internal.jpg' />
-					</Tile>
-					<Tile basis='1/4'>
-						<Image src='https://static.vinepair.com/wp-content/uploads/2017/06/ind-internal.jpg' />
-					</Tile>
-					<Tile basis='1/4'>
-						<Image src='https://static.vinepair.com/wp-content/uploads/2017/06/ind-internal.jpg' />
-					</Tile>
-					<Tile basis='1/4'>
-						<Image src='https://static.vinepair.com/wp-content/uploads/2017/06/ind-internal.jpg' />
-					</Tile>
-				</Tiles>
-			</Section>
-		</Box>
 		);
 	}
 }
