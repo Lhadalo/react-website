@@ -49,7 +49,7 @@ class Main extends Component {
               priority={priority}
               onResponsive={this._onResponsive}>
               {nav}
-              <Section>
+              <Section pad='none'>
                 <TransitionGroup>
                   <CSSTransition key={location.key} classNames='fade' timeout={300}>
                     <Switch location={location}>

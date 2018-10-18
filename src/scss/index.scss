@@ -4,6 +4,31 @@
 	text-decoration: none;
 }
 
+.GalleryTiles {
+	margin-bottom: 20px;
+}
+
+.GalleryAnchor {
+	width: 400px; 
+	height: 100px;
+}
+
+.GalleryAnchor:hover {
+	background-color:#00000011;
+	text-decoration: none;
+}
+
+.TileBox {
+	height: 100%;
+}
+
+.TileImage {
+	margin-left: 8px;
+	width: 80px;
+	height: 80px;
+}
+
+
 .fade-enter {
 	opacity: 0;
 	z-index: 1;
