@@ -16,6 +16,7 @@ import Contact from '../screens/Contact';
 
 // Components
 import NavigationBar from './NavigationBar';
+import Footer from './Footer';
 
 class Main extends Component {
   render() {
@@ -40,6 +41,7 @@ class Main extends Component {
           <Article>
             <NavigationBar />
             <Routes />
+            <Footer />
           </Article>
         </Router>
       </App>

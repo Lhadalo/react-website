@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 
 // Grommet
 import Header from 'grommet/components/Header';
@@ -8,23 +7,29 @@ import Box from 'grommet/components/Box';
 
 // Icons
 import Logo from 'grommet/components/icons/base/BrandGrommetPath';
-import HomeIcon from 'grommet/components/icons/base/Home';
 import ContactIcon from 'grommet/components/icons/base/Contact';
-import GalleryIcon from 'grommet/components/icons/base/Gallery';
 import DeployIcon from 'grommet/components/icons/base/Deploy';
 
 class NavigationBar extends Component {
+	constructor() {
+		super();
+		this.state = {
+			items: [
+				{ path: '/projects', label: 'projekt', icon: 'project', desc: 'Projekt jag har gjort på min fritid. Här hittar du också mitt CV.' },
+				{ path: '/contact', label: 'kontakt', icon: 'contact', desc: 'Mina kontaktuppgifter. Kontakta mig gärna eller lägg till mig på LinkedIn.' }	
+			]
+		};
+	}
+	
 	_getIcon(iconName) {
 		switch (iconName) {
-			case 'home': return <HomeIcon />;
 			case 'contact': return <ContactIcon />;
-			case 'photo': return <GalleryIcon />;
 			default: return <DeployIcon />;
 		}
 	}
 
 	render() {
-		const { nav: { items } } = this.props;
+		const { items } = this.state;
 		const links = items.map(page => (
 				<Box key={page.label} pad='small'>
 					<Anchor  
@@ -50,8 +55,4 @@ class NavigationBar extends Component {
 	}
 }
 
-function mapStateToProps(state) {
-	return { nav: state.nav };
-}
-
-export default connect(mapStateToProps)(NavigationBar);
+export default NavigationBar;
