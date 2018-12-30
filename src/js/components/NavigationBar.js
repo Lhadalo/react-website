@@ -13,20 +13,7 @@ import ContactIcon from 'grommet/components/icons/base/Contact';
 import GalleryIcon from 'grommet/components/icons/base/Gallery';
 import DeployIcon from 'grommet/components/icons/base/Deploy';
 
-import { navActivate } from '../actions/nav';
-
 class NavigationBar extends Component {
-	constructor() {
-		super();
-		this._onClose = this._onClose.bind(this);
-		this._getIcon = this._getIcon.bind(this);
-	}
-	
-	_onClose() {
-		this.props.dispatch(navActivate(false));
-	}
-
-
 	_getIcon(iconName) {
 		switch (iconName) {
 			case 'home': return <HomeIcon />;
@@ -38,7 +25,6 @@ class NavigationBar extends Component {
 
 	render() {
 		const { nav: { items } } = this.props;
-
 		const links = items.map(page => (
 				<Box key={page.label} pad='small'>
 					<Anchor  
@@ -49,7 +35,7 @@ class NavigationBar extends Component {
 				</Box>
 				));
 		return (
-			<Header colorIndex='neutral-3' fixed={true} size='small'>
+			<Header colorIndex='light-1' fixed={true} size='small'>
 		
 				<Box pad='small'>
 					<Anchor path='/' icon={<Logo colorIndex='brand' size='medium' />} label='ola dahl.' primary={true} align='start' />	
@@ -58,6 +44,7 @@ class NavigationBar extends Component {
 				<Box margin='small' flex={true} justify='start' direction='row' responsive={false}>
 					{links}
 				</Box>
+				<Anchor><span><strong>SV</strong></span></Anchor>
 			</Header>
 		);
 	}

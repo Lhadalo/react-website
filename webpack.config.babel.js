@@ -113,7 +113,11 @@ export default Object.assign({
             }
           }
         ]
+      },
+      {
+        test: /\.(png|jpg)$/, loader: 'url-loader?limit=8192'
       }
+
     ]
   }
 }, devConfig);

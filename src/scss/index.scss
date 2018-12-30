@@ -63,3 +63,16 @@
 	opacity: 1;
 	transition: opacity 250ms ease-in;
 }
+
+.flex-center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 384px;
+  overflow: auto;
+}
+
+.flex-center span {
+	margin: 0;
+	padding: 20px;
+}

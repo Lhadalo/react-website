@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
 
+import axios from 'axios';
+
+// Grommet
 import Section from 'grommet/components/Section';
 import Box from 'grommet/components/Box';
 import Title from 'grommet/components/Title';
@@ -19,36 +22,42 @@ class Contact extends Component {
         <Title>{title}</Title>
         <br />
         {contactItems.map(item => (
-          <Anchor path={item.path} label={item.label} key={item.label} />
+          <Anchor href={item.path} label={item.label} key={item.label} />
         ))}
         <br />
       </Box>
     );
   }
 
-  _renderField(field) {
+  _renderNameField(field) {
     const { meta: { touched, error } } = field;
-    const className = `form-control ${touched && error ? 'is-invalid' : ''}`;
     return (
       <FormField label={field.label} error={touched ? error : ''}>
         <input 
           aria-describedby='validationField'
           type='text'
-          className={className}
           {...field.input}
         />
       </FormField>
     );
   }
 
+  _renderEmailField(field) {
+    const { meta: { touched, error } } = field;
+    return (
+      <FormField label={field.label} error={touched ? error : ''}>
+        <input type='email' 
+        {...field.input} />
+      </FormField>
+    );
+  }
+
   _renderTextArea(field) {
     const { meta: { touched, error } } = field;
-    const className = `form-control ${touched && error ? 'is-invalid' : ''}`;
     return (
       <FormField label={field.label} error={touched ? error : ''}>
         <textarea 
         type='text'
-        className={className}
         {...field.input}
         />
       </FormField>
@@ -58,11 +67,10 @@ class Contact extends Component {
   _renderContactForm() {
     const { handleSubmit } = this.props;
     return (
-      
         <Form onSubmit={handleSubmit(this._onSubmit.bind(this))} pad='small'>
           <FormFields>
-            <Field label='name' name='name' component={this._renderField} />
-            <Field label='email' name='email' component={this._renderField} />
+            <Field label='name' name='name' component={this._renderNameField} />
+            <Field label='email' name='email' component={this._renderEmailField} />
             <Field label='message' name='message' component={this._renderTextArea} />
           </FormFields>
           <Box pad={{ vertical: 'medium' }} align='center'>
@@ -72,14 +80,28 @@ class Contact extends Component {
     );
   }
 
+  sendContactForm() {
+    const mailbomburl = 'https://api.mailgun.net/v3/sandboxdf527ad67a134d3eb77be3bd0b39e964.mailgun.org';
+
+    axios.post({ 
+      url: mailbomburl, 
+      auth: {
+        
+      } 
+    });
+  }
+
   _onSubmit(values) {
     console.log(values);
   }
 
   render() {
     return (
-      <Section>
-        <Box pad='medium' responsive={true}>
+      <Section pad='medium'>
+        <Box pad='medium'>
+          <span>Kontakta mig gärna på mail, eller lägg till mig på LinkedIn.</span>
+        </Box>
+        <Box pad={{ vertical: 'large', horizontal: 'none' }} responsive={true}>
           <Split showOnResponsive='both' fixed={false}>
             <Box align='center' responsive={true}>
               {this._renderContactItem('email', 

@@ -7,9 +7,9 @@ active: true,
 enabled: true,
 responsive: 'multiple',
 items: [
-	{ path: '/photos', label: 'photos', icon: 'photo' },
-	{ path: '/projects', label: 'projects', icon: 'project' },
-	{ path: '/contact', label: 'contact', icon: 'contact' }
+	// { path: '/photos', label: 'foton', icon: 'photo', desc: 'Foton jag tagit' },
+	{ path: '/projects', label: 'projekt', icon: 'project', desc: 'Projekt jag har gjort på min fritid. Här hittar du också mitt CV.' },
+	{ path: '/contact', label: 'kontakt', icon: 'contact', desc: 'Mina kontaktuppgifter. Kontakta mig gärna eller lägg till mig på LinkedIn.' }
 ]
 };
 

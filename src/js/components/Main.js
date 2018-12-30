@@ -1,29 +1,23 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { BrowserRouter as Router, Route, Switch, withRouter } from 'react-router-dom';
-
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
 
 // Grommet
 import App from 'grommet/components/App';
 import Article from 'grommet/components/Article';
+
 // Screens
 import Home from '../screens/Home';
 import Photos from '../screens/Photos';
 import PhotosShow from '../screens/PhotosGallery';
-import PhotoViewer from './PhotoViewer';
 import Projects from '../screens/Projects';
 import Contact from '../screens/Contact';
 
+// Components
 import NavigationBar from './NavigationBar';
 
 class Main extends Component {
-  constructor() {
-    super();
-    this._onResponsive = this._onResponsive.bind(this);
-  }
-
-
   render() {
     const Routes = withRouter(({ location }) => (
       <TransitionGroup exit={false}>
@@ -32,7 +26,6 @@ class Main extends Component {
             <Route exact={true} path='/' component={Home} />
             <Route path='/home' component={Home} />
             <Route path='/photos/gallery/:id' component={PhotosShow} />
-            <Route path='/photos/photo/:id' component={PhotoViewer} />
             <Route path='/photos' component={Photos} />
             <Route path='/projects' component={Projects} />
             <Route path='/contact' component={Contact} />
@@ -42,7 +35,7 @@ class Main extends Component {
     ));
     
     return (
-      <App centered={false}>
+      <App centered={true}>
         <Router>
           <Article>
             <NavigationBar />

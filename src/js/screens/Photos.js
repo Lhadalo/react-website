@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-
 import _ from 'lodash';
 
+// Grommet
 import Box from 'grommet/components/Box';
 import Section from 'grommet/components/Section';
 import Anchor from 'grommet/components/Anchor';
@@ -11,11 +11,12 @@ import Image from 'grommet/components/Image';
 import Tiles from 'grommet/components/Tiles';
 import Tile from 'grommet/components/Tile';
 
+// Actions
 import { fetchImagesDescription, fetchImages } from '../actions/action_photos';
 
 class Photos extends Component {
 	componentWillMount() {
-		this.props.fetchImages();
+		// this.props.fetchImages();
 	}
 
 	_renderGalleryTiles() {
@@ -41,11 +42,11 @@ class Photos extends Component {
 		return (
 			<Section pad='medium'>
 				<Box pad='medium'>
-					<span>Photos from my life I take with my Pixel 2 phone.</span>	
+					<span>Foton jag tar med min Pixel 2. Oftast när jag är på semester.</span>	
 				</Box>
 
 				<Box pad='medium'>
-					<h4><strong>Galleries</strong></h4>
+					<h4><strong>Album</strong></h4>
 					<Tiles className='GalleryTiles' flush={true}>
 						{this._renderGalleryTiles()}
 					</Tiles>

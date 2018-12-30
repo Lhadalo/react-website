@@ -3,7 +3,6 @@ import { FETCH_IMAGE, FETCH_IMAGES, FETCH_IMAGES_DESCRIPTION } from '../actions'
 import { createReducer } from './utils';
 import _ from 'lodash';
 
-
 const initialState = {};
 
 const handlers = {
