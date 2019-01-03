@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import { navitems } from '../links';
+
 // Grommet
 import Anchor from 'grommet/components/Anchor';
 import Split from 'grommet/components/Split';
@@ -9,38 +11,21 @@ import Tile from 'grommet/components/Tile';
 import Paragraph from 'grommet/components/Paragraph';
 import Image from 'grommet/components/Image';
 
-import ContactIcon from 'grommet/components/icons/base/Contact';
-import DeployIcon from 'grommet/components/icons/base/Deploy';
-
 class Home extends Component {
-  constructor() {
-		super();
-		this.state = {
-			items: [
-				{ path: '/projects', label: 'projekt', icon: 'project', desc: 'Projekt jag har gjort på min fritid. Här hittar du också mitt CV.' },
-				{ path: '/contact', label: 'kontakt', icon: 'contact', desc: 'Mina kontaktuppgifter. Kontakta mig gärna eller lägg till mig på LinkedIn.' }	
-			]
-		};
+  componentDidMount() {
+    window.scrollTo(0, 0);
   }
-  
-  _getIcon(iconName) {
-		switch (iconName) {
-			case 'contact': return <ContactIcon />;
-			default: return <DeployIcon />;
-		}
-  }
-  
+
   render() {
-    const { items } = this.state;
     const style = {
       textDecoration: 'none'
     };
 
-    const links = items.map(page => (
+    const links = navitems.map(page => (
       <Tile key={page.label} basis='1/2'>
         <Anchor path={page.path} className='grommetux-anchor--animate-icon' style={style}>
         <Box margin='medium'>
-          <Anchor label={page.label} path={page.path} icon={this._getIcon(page.icon)} />
+          <Anchor label={page.label} path={page.path} icon={page.icon} />
           <Paragraph size='medium'><strong>{page.desc}</strong></Paragraph>
         </Box>
         </Anchor>
@@ -49,7 +34,7 @@ class Home extends Component {
     
     return (
         <Box pad={{ horizontal: 'medium', vertical: 'large' }}>
-          <Split fixed={false}>
+          <Split fixed={false} showOnResponsive='both'>
             <Box className='flex-center' pad='medium' >
               <Paragraph>
                 <strong>

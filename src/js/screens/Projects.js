@@ -23,6 +23,9 @@ class Projects extends Component {
     };
   }
 
+  componentDidMount() {
+    window.scrollTo(0, 0);
+  }
 
   _renderListItems() {
     const style = {

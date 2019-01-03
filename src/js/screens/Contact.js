@@ -16,6 +16,10 @@ import FormField from 'grommet/components/FormField';
 import Button from 'grommet/components/Button';
 
 class Contact extends Component {
+  componentDidMount() {
+    window.scrollTo(0, 0);
+  }
+
   _renderContactItem(title, contactItems) {
     return (
       <Box align='center' >

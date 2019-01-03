@@ -76,3 +76,50 @@
 	margin: 0;
 	padding: 20px;
 }
+
+/*
+.grommetux-anchor--active {
+	color: black !important; 
+}
+
+.grommetux-anchor--active > svg {
+	fill: black !important;
+	stroke: black !important;
+}
+*/
+
+@media screen and (max-width: 44.9375em) {
+	.grommetux-box--pad-vertical-large {
+    padding-top: 0px;
+    padding-bottom: 24px;
+	}
+
+	.grommetux-box--direction-row.grommetux-box--pad-between-small>*:not(:last-child) {
+		margin: auto;
+		padding: 15px;
+	}
+
+	.flex-center {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: auto;
+		overflow: auto;
+	}
+
+	.DesktopOnly {
+		display: none;
+	}
+
+	.grommetux-header__container--fixed .grommetux-header__wrapper {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+		z-index: 50;
+		
+	.BottomBar {
+		display: none;
+	}
+}
+}

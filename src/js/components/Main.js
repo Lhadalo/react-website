@@ -17,9 +17,36 @@ import Contact from '../screens/Contact';
 // Components
 import NavigationBar from './NavigationBar';
 import Footer from './Footer';
+import BottomBar from './BottomBar';
 
 class Main extends Component {
+  constructor() {
+    super();
+    this.state = {
+      width: window.innerWidth,
+    };
+  }
+
+  componentWillMount() {
+    window.addEventListener('resize', this.handleWindowSizeChange);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.handleWindowSizeChange);
+  }
+
+  handleWindowSizeChange() {
+    this.setState({
+      width: window.innerWidth
+    });
+  }
+
   render() {
+    const isMobile = this.state.width <= 500;
+    const style = {
+      marginBottom: '60px',
+    };
+    
     const Routes = withRouter(({ location }) => (
       <TransitionGroup exit={false}>
         <CSSTransition key={location.key} classNames='fade' timeout={300}>
@@ -35,16 +62,31 @@ class Main extends Component {
       </TransitionGroup>
     ));
     
+    if (isMobile) {
+      return (
+        <App centered={true} style={style}>
+          <Router>
+            <Article>
+              <NavigationBar />
+              <Routes />
+              <Footer />
+              <BottomBar />
+            </Article>
+          </Router>
+        </App>
+      );
+    }
+
     return (
-      <App centered={true}>
-        <Router>
-          <Article>
-            <NavigationBar />
-            <Routes />
-            <Footer />
-          </Article>
-        </Router>
-      </App>
+    <App centered={true}>
+      <Router>
+        <Article>
+          <NavigationBar />
+          <Routes />
+          <Footer />
+        </Article>
+      </Router>
+    </App>
     );
   }
 }

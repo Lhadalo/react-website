@@ -10,7 +10,7 @@ import Mail from 'grommet/components/icons/base/Mail';
 
 const Footer = () => (
 	<Box align='center' separator='top' margin={{ horizontal: 'medium' }}>
-		<Box direction='row' margin='small'>
+		<Box direction='row' margin='small' responsive={false}>
 			<Anchor icon={<Mail />} />
 			<Anchor icon={<LinkedIn />} />
 			<Anchor icon={<Github />} />
