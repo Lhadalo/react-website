@@ -16,9 +16,21 @@ class Projects extends Component {
     super();
     this.state = {
       projects: [
-        { title: 'React Website', desc: 'Nulla vitae elit libero, a pharetra augue. Vestibulum id ligula porta felis euismod semper. Aenean lacinia bibendum nulla sed consectetur. Curabitur blandit tempus porttitor.', links: [{ linkName: 'Github Link', linkSrc: 'https://github.com/Lhadalo/react-website' }] },
-        { title: 'Numerare Android App', desc: 'Nulla vitae elit libero, a pharetra augue. Vestibulum id ligula porta felis euismod semper. Aenean lacinia bibendum nulla sed consectetur. Curabitur blandit tempus porttitor.', links: [{ linkName: 'Github Link', linkSrc: '#' }] },
-        { title: 'Thesis Apps', desc: 'Nulla vitae elit libero, a pharetra augue. Vestibulum id ligula porta felis euismod semper. Aenean lacinia bibendum nulla sed consectetur. Curabitur blandit tempus porttitor.', links: [{ linkName: 'Github Link (Android SDK)', linkSrc: '#' }, { linkName: 'Github Link (Flutter)' }] },
+        { 
+          title: 'React Webbsida', 
+          desc: 'Jag har länge haft en tanke på att skapa en personlig sida. Tanken är att denna sidan ska utvecklas med tiden och jag har planer på att lägga till funktioner framöver. Sidan är byggd i React och har fungerat lite som ett projekt för att lära mig detta verktyg.', 
+          links: [{ linkName: 'Github Länk', linkSrc: 'https://github.com/Lhadalo/react-website' }] 
+        },
+        {
+          title: 'Hooky', 
+          desc: 'Under vårterminen 2017 gjorde vi projekt ute på företag med skolan. Vi var ett gäng som gjorde en webbsida i React åt Djäkne i Malmö. Sidan fungerade som en inspirationsplatform, där producenter kunde lägga ut matprodukter som de ville promota. Detta var min första inblick i React och jag tyckte det var väldigt kul att arbeta i.', 
+          links: [{ linkName: 'Github Länk', linkSrc: 'https://github.com/Lhadalo/projekt2-p16' }] 
+        },
+        {
+          title: 'Föreställningsrapport',
+          desc: 'Jag gjorde en enkel app för att skicka en formaterad rapport som SMS till ett antal mottagare. Denna appen användes av Parkteatern i Stockholm under vissa av deras föreställningar. Appen är skriven i Kotlin och använder Realm som databas.',
+          links: [{ linkName: 'Github Länk', linkSrc: 'https://github.com/Lhadalo/rapportering' }]
+        }
       ]
     };
   }
@@ -71,11 +83,10 @@ class Projects extends Component {
 
         <Box pad='medium'>
             <h4><strong>CV</strong></h4>
-      
+
         </Box>
 
         <Box pad='medium' align='center'>
-      
             <Anchor 
               label='Ladda ned mitt CV som PDF' 
               href='https://firebasestorage.googleapis.com/v0/b/oladahl-website.appspot.com/o/Liten_uppgift_i_textanalys_DAHL_OLA.pdf?alt=media&token=96cce8ea-8f5b-4e2e-b723-7101959d745e'
