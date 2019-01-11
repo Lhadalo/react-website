@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 import { BrowserRouter as Router, Route, Switch, withRouter } from 'react-router-dom';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
 
@@ -25,6 +24,8 @@ class Main extends Component {
     this.state = {
       width: window.innerWidth,
     };
+
+    this.handleWindowSizeChange = this.handleWindowSizeChange.bind(this);
   }
 
   componentWillMount() {
@@ -91,8 +92,4 @@ class Main extends Component {
   }
 }
 
-function mapStateToProps(state) {
-  return { nav: state.nav };
-}
-
-export default connect(mapStateToProps)(Main);
+export default Main;
