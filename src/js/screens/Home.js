@@ -25,7 +25,7 @@ class Home extends Component {
       <Tile key={page.label} basis='1/2'>
         <Anchor path={page.path} className='grommetux-anchor--animate-icon' style={style}>
         <Box margin='medium'>
-          <Anchor label={page.label} path={page.path} icon={page.icon} />
+          <Anchor tag='span' label={page.label} icon={page.icon} />
           <Paragraph size='medium'><strong>{page.desc}</strong></Paragraph>
         </Box>
         </Anchor>
