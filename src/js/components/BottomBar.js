@@ -24,10 +24,11 @@ class BottomBar extends Component {
 	};
 
 	return (
-		<Box colorIndex='light-1' fixed={true} size='large' separator='top' style={style}>
+		<Box colorIndex='light-1' size='large' separator='top' style={style}>
 			<Box margin='medium' flex={true} justify='around' direction='row' responsive={false} >
 					{links}
-				</Box>
+			</Box>
+			
 		</Box>
 	);
 	}
