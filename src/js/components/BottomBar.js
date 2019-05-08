@@ -10,6 +10,8 @@ class BottomBar extends Component {
 		const links = navitems.map(page => (
 			<Box key={page.label} pad='small'>
 				<Anchor  
+					className='subpath'
+					animateIcon={false}
 					path={page.path} 
 					label={page.label} 
 					align='center'
