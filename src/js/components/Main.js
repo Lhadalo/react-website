@@ -8,8 +8,6 @@ import Article from 'grommet/components/Article';
 
 // Screens
 import Home from '../screens/Home';
-import Photos from '../screens/Photos';
-import PhotosShow from '../screens/PhotosGallery';
 import Projects from '../screens/Projects';
 import Contact from '../screens/Contact';
 
@@ -54,8 +52,6 @@ class Main extends Component {
           <Switch location={location} >
             <Route exact={true} path='/' component={Home} />
             <Route path='/home' component={Home} />
-            <Route path='/photos/gallery/:id' component={PhotosShow} />
-            <Route path='/photos' component={Photos} />
             <Route path='/projects' component={Projects} />
             <Route path='/contact' component={Contact} />
           </Switch>
