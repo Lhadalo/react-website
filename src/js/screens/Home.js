@@ -10,27 +10,47 @@ import Tiles from 'grommet/components/Tiles';
 import Tile from 'grommet/components/Tile';
 import Paragraph from 'grommet/components/Paragraph';
 import Image from 'grommet/components/Image';
+import Responsive from 'grommet/utils/Responsive';
 
 class Home extends Component {
+  constructor() {
+    super();
+    this._onResponsive = this._onResponsive.bind(this);
+    this.state = { };
+  }
+
   componentDidMount() {
+    Responsive.start(this._onResponsive);
     window.scrollTo(0, 0);
+    
+    const language = (navigator.languages && navigator.languages[0]) || navigator.language || navigator.userLanguage;
+    console.log(language);
+  }
+
+  _onResponsive(small) {
+    this.setState({ small });
   }
 
   render() {
     const style = {
-      textDecoration: 'none'
+      textDecoration: 'none',
+    };
+
+    const boxMargin = {
+      marginRight: '100px'
     };
 
     const links = navitems.map(page => (
       <Tile key={page.label} basis='1/2'>
         <Anchor path={page.path} className='grommetux-anchor--animate-icon' style={style}>
-        <Box margin='medium'>
+        <Box margin='medium' style={this.state.small ? null : boxMargin}>
           <Anchor tag='span' label={page.label} icon={page.icon} />
-          <Paragraph size='medium'><strong>{page.desc}</strong></Paragraph>
+          <Paragraph><strong>{page.desc}</strong></Paragraph>
         </Box>
         </Anchor>
       </Tile>
     ));
+    
     
     return (
         <Box pad={{ horizontal: 'medium', vertical: 'large' }}>
@@ -49,7 +69,7 @@ class Home extends Component {
             </Box>
           </Split>
           
-          <Tiles margin={{ top: 'small' }}>
+          <Tiles margin={{ top: 'small' }} >
             {links}
           </Tiles>
         </Box>

@@ -77,16 +77,14 @@
 	padding: 20px;
 }
 
-/*
-.grommetux-anchor--active {
+.subpath.grommetux-anchor--active {
 	color: black !important; 
 }
 
-.grommetux-anchor--active > svg {
+.subpath.grommetux-anchor--active > svg {
 	fill: black !important;
-	stroke: black !important;
+ 	stroke: black !important;
 }
-*/
 
 @media screen and (max-width: 44.9375em) {
 	.grommetux-box--pad-vertical-large {
@@ -101,7 +99,7 @@
 
 	.flex-center {
     display: flex;
-    flex-direction: column;
+    // flex-direction: column;
     justify-content: center;
     height: auto;
 		overflow: auto;

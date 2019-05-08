@@ -23,7 +23,7 @@ class Contact extends Component {
   _renderContactItem(title, contactItems) {
     return (
       <Box align='center' >
-        <Title>{title}</Title>
+        <Title style={{ fontWeight: '400' }}>{title}</Title>
         <br />
         {contactItems.map(item => (
           <Anchor href={item.path} label={item.label} key={item.label} />
@@ -110,14 +110,14 @@ class Contact extends Component {
             <Box align='center' responsive={true}>
               {this._renderContactItem('email', 
                 [{ path: 'mailto:oladahl.lel@gmail.com', label: 'oladahl.lel@gmail.com' }])}
-              {this._renderContactItem('phone', 
+              {this._renderContactItem('telefon', 
                 [{ path: 'tel:+46734013044', label: '+46734013044' }])}
               {this._renderContactItem('internet', 
                 [{ path: '#', label: 'github' }, { path: '#', label: 'linkedin' }])}
             </Box>
-
+            
             <Box align='center' responsive={true}>
-              <Title>contact me</Title>
+              <Title>kontakta mig</Title>
               {this._renderContactForm()}
             </Box>
           </Split>
