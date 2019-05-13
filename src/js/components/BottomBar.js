@@ -1,13 +1,16 @@
 import React, { Component } from 'react';
 
-import { navitems } from '../links';
+import { connect } from 'react-redux';
+import { getLinksContent } from '../translation/links';
 
 import Anchor from 'grommet/components/Anchor';
 import Box from 'grommet/components/Box';
 
 class BottomBar extends Component {
 	render() {
-		const links = navitems.map(page => (
+		const items = getLinksContent(this.props.language);
+
+		const links = items.map(page => (
 			<Box key={page.label} pad='small'>
 				<Anchor  
 					className='subpath'
@@ -30,10 +33,15 @@ class BottomBar extends Component {
 			<Box margin='medium' flex={true} justify='around' direction='row' responsive={false} >
 					{links}
 			</Box>
-			
 		</Box>
 	);
 	}
 }
 
-export default BottomBar;
+const mapStateToProps = (state) => {
+	return {
+		language: state.language.language
+	};
+};
+
+export default connect(mapStateToProps)(BottomBar);

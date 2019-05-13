@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch, withRouter } from 'react-router-dom';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
 
+import { getLanguage } from '../actions/action_languages';
+import { connect } from 'react-redux';
+
 // Grommet
 import App from 'grommet/components/App';
 import Article from 'grommet/components/Article';
@@ -27,6 +30,7 @@ class Main extends Component {
   }
 
   componentWillMount() {
+    this.props.onGetLanguage();
     window.addEventListener('resize', this.handleWindowSizeChange);
   }
 
@@ -41,6 +45,7 @@ class Main extends Component {
   }
 
   render() {
+    const { locale } = this.props;
     const isMobile = this.state.width <= 500;
     const style = {
       marginBottom: '60px',
@@ -50,10 +55,10 @@ class Main extends Component {
       <TransitionGroup exit={false}>
         <CSSTransition key={location.key} classNames='fade' timeout={300}>
           <Switch location={location} >
-            <Route exact={true} path='/' component={Home} />
-            <Route path='/home' component={Home} />
-            <Route path='/projects' component={Projects} />
-            <Route path='/contact' component={Contact} />
+            <Route exact={true} path='/' render={() => <Home locale={locale} />} />
+            <Route path='/home' render={() => <Home locale={locale} />} />
+            <Route path='/projects' render={() => <Projects locale={locale} />} />
+            <Route path='/contact' render={() => <Contact locale={locale} />} />
           </Switch>
         </CSSTransition>
       </TransitionGroup>
@@ -88,4 +93,16 @@ class Main extends Component {
   }
 }
 
-export default Main;
+const mapStateToProps = (state) => {
+  return {
+    locale: state.language.language
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onGetLanguage: () => dispatch(getLanguage())
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Main);

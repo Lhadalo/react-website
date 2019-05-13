@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 
-import { navitems } from '../links';
+import { changeLanguage } from '../actions/action_languages';
+import { connect } from 'react-redux';
+import { getLinksContent } from '../translation/links';
+
+// import { navitems } from '../links';
 // Grommet
 import Header from 'grommet/components/Header';
 import Anchor from 'grommet/components/Anchor';
@@ -14,8 +18,10 @@ class NavigationBar extends Component {
 	constructor() {
 		super();
 		this._onResponsive = this._onResponsive.bind(this);
+		this._onClickLanguage = this._onClickLanguage.bind(this);
 		this.state = {};
 	}
+
 
 	componentDidMount() {
 		Responsive.start(this._onResponsive);
@@ -25,8 +31,14 @@ class NavigationBar extends Component {
 		this.setState({ small });
 	}
 
+	_onClickLanguage() {
+		this.props.onChangeLanguage();
+	}
+
 	render() {
-		const links = navitems.map(page => (
+		const linkContent = getLinksContent(this.props.language);
+
+		const links = linkContent.map(page => (
 				<Box key={page.label} pad='small'>
 					<Anchor
 						className='subpath'  
@@ -40,7 +52,7 @@ class NavigationBar extends Component {
 		return (
 			<Header colorIndex='light-1' fixed={true} size='small' className='Header'>
 		
-				<Box pad='small'>
+				<Box pad='small' alignContent='center'>
 					<Anchor 
 						path='/' 
 						animateIcon={!this.state.small} 
@@ -51,12 +63,28 @@ class NavigationBar extends Component {
 						style={{ textDecoration: 'none' }} />	
 				</Box>
 			
-				<Box margin='small' flex={true} justify='start' direction='row' responsive={false} className='DesktopOnly'>
+				<Box margin='small' flex={false} justify='start' direction='row' responsive={false} className='DesktopOnly'>
 					{links}
+				</Box>
+
+				<Box margin='small' pad={{ horizontal: 'medium' }}flex={!this.state.small} justify='end' direction='row' responsive={false}>
+					<Anchor label='SV' onClick={this._onClickLanguage} />
 				</Box>
 			</Header>
 		);
 	}
 }
 
-export default NavigationBar;
+const mapStateToProps = (state) => {
+  return {
+    language: state.language.language
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+		onChangeLanguage: () => dispatch(changeLanguage()),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(NavigationBar);

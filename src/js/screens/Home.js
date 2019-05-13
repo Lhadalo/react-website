@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
-import { navitems } from '../links';
+import { getLinksContent } from '../translation/links';
+import { getHomeDescription } from '../translation/home';
 
 // Grommet
 import Anchor from 'grommet/components/Anchor';
@@ -19,12 +20,12 @@ class Home extends Component {
     this.state = { };
   }
 
+  componentWillMount() {
+    window.scrollTo(0, 0);
+  }
+  
   componentDidMount() {
     Responsive.start(this._onResponsive);
-    window.scrollTo(0, 0);
-    
-    const language = (navigator.languages && navigator.languages[0]) || navigator.language || navigator.userLanguage;
-    console.log(language);
   }
 
   _onResponsive(small) {
@@ -32,6 +33,9 @@ class Home extends Component {
   }
 
   render() {
+    const navLinks = getLinksContent(this.props.locale);
+    const desciption = getHomeDescription(this.props.locale);
+
     const style = {
       textDecoration: 'none',
     };
@@ -40,7 +44,7 @@ class Home extends Component {
       marginRight: '100px'
     };
 
-    const links = navitems.map(page => (
+    const links = navLinks.map(page => (
       <Tile key={page.label} basis='1/2'>
         <Anchor path={page.path} className='grommetux-anchor--animate-icon' style={style}>
         <Box margin='medium' style={this.state.small ? null : boxMargin}>
@@ -58,9 +62,7 @@ class Home extends Component {
             <Box className='flex-center' pad='medium' >
               <Paragraph>
                 <strong>
-                Hej, mitt namn är Ola Dahl och är en nyligen examinerad utvecklare. 
-                Områden jag just nu tycker är kul är frontend inom React, Android och Flutter.
-                Utöver utveckling är musik ett stort intresse, framför allt körsång och piano.
+                  {desciption}
                 </strong>
               </Paragraph>
             </Box>

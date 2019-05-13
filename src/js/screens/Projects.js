@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import _ from 'lodash';
-
+import * as translation from '../translation/project';
 // Grommet
 import Box from 'grommet/components/Box';
 import Section from 'grommet/components/Section';
@@ -17,24 +17,7 @@ class Projects extends Component {
     super();
     this._onResponsive = this._onResponsive.bind(this);
     this.state = {
-      projects: [
-        { 
-          title: 'React Webbsida', 
-          desc: 'Jag har länge haft en tanke på att skapa en personlig sida. Tanken är att denna sidan ska utvecklas med tiden.', 
-          links: [{ linkName: 'Github', linkSrc: 'https://github.com/Lhadalo/react-website' }] 
-        },
-        {
-          title: 'Hooky', 
-          desc: 'Under vårterminen 2017 gjorde vi projekt ute på företag med skolan. Vi var ett gäng som gjorde en webbsida i React åt Djäkne i Malmö. Sidan fungerade som en inspirationsplatform, där producenter kunde lägga upp matprodukter.', 
-          links: [{ linkName: 'Github', linkSrc: 'https://github.com/Lhadalo/projekt2-p16' }] 
-        },
-        {
-          title: 'Föreställningsrapport',
-          desc: 'Jag gjorde en enkel app för att skicka en formaterad rapport som SMS till ett antal mottagare. Denna appen användes av Parkteatern i Stockholm under vissa av deras föreställningar. Appen är skriven i Kotlin och använder Realm som databas.',
-          links: [{ linkName: 'Github', linkSrc: 'https://github.com/Lhadalo/rapportering' }]
-        }
-      ],
-      small: false,
+      small: false
     };
   }
 
@@ -48,7 +31,8 @@ class Projects extends Component {
   }
 
   _renderProjectItems() {
-    return _.map(this.state.projects, (project, index) => (
+    const projects = translation.getProjects(this.props.locale);
+    return _.map(projects, (project, index) => (
       <ListItem 
         key={index} 
         direction='column' 
@@ -72,22 +56,23 @@ class Projects extends Component {
   }
 
   _renderCVItems() {
-    return _.map(this.state.projects, (project, index) => (
+    const CV = translation.getCV(this.props.locale);
+    return _.map(CV, (cvItem, index) => (
       <ListItem 
         key={index} 
         direction='column' 
         align='start'
-        pad={{ vertical: 'medium' }}>
+        pad={{ vertical: 'small' }}>
         <Box 
         direction='row' 
         full={{ horizontal: true }} 
         justify='between' 
         responsive={false} 
         style={this.state.small ? null : { maxWidth: '576px' }}>
-          <h4 style={{ marginBottom: '14px' }}>{<strong>{project.title}</strong>}</h4>
-          <p style={{ marginBottom: '14px', marginTop: '0', fontWeight: '400' }}>2012-2015</p>
+          <h4 style={{ marginBottom: '14px' }}>{<strong>{cvItem.title}</strong>}</h4>
+          <p style={{ marginBottom: '14px', marginTop: '0', fontWeight: '400' }}>{cvItem.years}</p>
         </Box>
-        <p style={{ marginBottom: '14px', marginTop: '0', fontWeight: '400' }}>Nullam quis risus eget urna mollis ornare vel eu leo. Nullam quis risus.</p>
+        <p style={{ marginBottom: '14px', marginTop: '0', fontWeight: '400' }}>{cvItem.desc}</p>
       </ListItem>
     ));
   }
@@ -96,7 +81,7 @@ class Projects extends Component {
 		return (
       <Section pad='medium'>
         <Box pad='medium'>
-            <span>Personliga projekt som jag har arbetat med, mest på min fritid.</span>
+            <span>{translation.pageTitle(this.props.locale)}</span>
         </Box>
         <Box pad='medium'>
             <h3 style={{ fontSize: '22px', marginBottom: '10px' }}><strong>Projekt</strong></h3>
@@ -113,7 +98,7 @@ class Projects extends Component {
         <Box pad='medium' align='center'>
             <Anchor 
               label='Ladda ned mitt CV som PDF' 
-              href='https://firebasestorage.googleapis.com/v0/b/oladahl-website.appspot.com/o/Liten_uppgift_i_textanalys_DAHL_OLA.pdf?alt=media&token=96cce8ea-8f5b-4e2e-b723-7101959d745e'
+              href={translation.getPDFUrl(this.props.locale)}
               target='_blank'
               icon={<DownloadIcon />}
               />

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
+import * as translation from '../translation/contact';
 
 import axios from 'axios';
 
@@ -22,7 +23,7 @@ class Contact extends Component {
 
   _renderContactItem(title, contactItems) {
     return (
-      <Box align='center' >
+      <Box align='center' key={title} >
         <Title style={{ fontWeight: '400' }}>{title}</Title>
         <br />
         {contactItems.map(item => (
@@ -70,15 +71,16 @@ class Contact extends Component {
 
   _renderContactForm() {
     const { handleSubmit } = this.props;
+    const { locale } = this.props;
     return (
         <Form onSubmit={handleSubmit(this._onSubmit.bind(this))} pad='small'>
           <FormFields>
-            <Field label='name' name='name' component={this._renderNameField} />
-            <Field label='email' name='email' component={this._renderEmailField} />
-            <Field label='message' name='message' component={this._renderTextArea} />
+            <Field label={translation.formNameLabel(locale)} name='name' component={this._renderNameField} />
+            <Field label={translation.formEmailLabel(locale)} name='email' component={this._renderEmailField} />
+            <Field label={translation.formMessageLabel(locale)} name='message' component={this._renderTextArea} />
           </FormFields>
           <Box pad={{ vertical: 'medium' }} align='center'>
-            <Button label='Send' type='submit' primary={true} />
+            <Button label={translation.formSubmitButton(locale)} type='submit' primary={true} />
           </Box>
         </Form>
     );
@@ -100,24 +102,22 @@ class Contact extends Component {
   }
 
   render() {
+    const { locale } = this.props;
+    const contactItems = translation.getContactItems(locale);
     return (
       <Section pad='medium'>
         <Box pad='medium'>
-          <span>Kontakta mig gärna på mail, eller lägg till mig på LinkedIn.</span>
+          <span>{translation.pageTitle(locale)}</span>
         </Box>
         <Box pad={{ vertical: 'large', horizontal: 'none' }} responsive={true}>
           <Split showOnResponsive='both' fixed={false}>
             <Box align='center' responsive={true}>
-              {this._renderContactItem('email', 
-                [{ path: 'mailto:oladahl.lel@gmail.com', label: 'oladahl.lel@gmail.com' }])}
-              {this._renderContactItem('telefon', 
-                [{ path: 'tel:+46734013044', label: '+46734013044' }])}
-              {this._renderContactItem('internet', 
-                [{ path: '#', label: 'github' }, { path: '#', label: 'linkedin' }])}
+              {contactItems.map(item => (
+                this._renderContactItem(item.title, item.links)
+              ))}
             </Box>
-            
             <Box align='center' responsive={true}>
-              <Title>kontakta mig</Title>
+              <Title>{translation.contactTitle(locale)}</Title>
               {this._renderContactForm()}
             </Box>
           </Split>
@@ -130,7 +130,6 @@ class Contact extends Component {
 
 function validate(values) {
   const errors = {};
-  
   if (!values.name) {
       errors.name = 'Please enter your name';
   }
