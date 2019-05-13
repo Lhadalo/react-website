@@ -12,6 +12,8 @@ export function getLanguage() {
 	if (language == null) {
 		const browserLang = (navigator.languages && navigator.languages[0]) 
 		|| navigator.language || navigator.userLanguage;
+
+		console.log(browserLang);
 		switch (browserLang) {
 			case 'sv-SE': language = SWEDISH; break;
 			case 'en-US': language = ENGLISH; break;
@@ -19,8 +21,6 @@ export function getLanguage() {
 		}
 		localStorage.setItem(KEY, language);
 	} 
-
-	console.log(language);
 
 	return {
 		type: GET_LANGUAGE,

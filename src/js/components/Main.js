@@ -30,7 +30,7 @@ class Main extends Component {
   }
 
   componentWillMount() {
-    this.props.handleChangeLanguage();
+    this.props.handleGetLanguage();
     window.addEventListener('resize', this.handleWindowSizeChange);
   }
 
