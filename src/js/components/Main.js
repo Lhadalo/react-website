@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch, withRouter } from 'react-router-dom';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
 
-import { getLanguage } from '../actions/action_languages';
+import { getLanguage, changeLanguage } from '../actions/action_languages';
 import { connect } from 'react-redux';
 
 // Grommet
@@ -30,7 +30,7 @@ class Main extends Component {
   }
 
   componentWillMount() {
-    this.props.onGetLanguage();
+    this.props.handleChangeLanguage();
     window.addEventListener('resize', this.handleWindowSizeChange);
   }
 
@@ -69,10 +69,10 @@ class Main extends Component {
         <App centered={true} style={style}>
           <Router>
             <Article>
-              <NavigationBar />
+              <NavigationBar locale={locale} changeLanguage={this.props.handleChangeLanguage} />
               <Routes />
-              <Footer />
-              <BottomBar />
+              <Footer locale={locale} />
+              <BottomBar locale={locale} />
             </Article>
           </Router>
         </App>
@@ -83,9 +83,9 @@ class Main extends Component {
     <App centered={true}>
       <Router>
         <Article>
-          <NavigationBar />
+          <NavigationBar locale={locale} changeLanguage={this.props.handleChangeLanguage} />
           <Routes />
-          <Footer />
+          <Footer locale={locale} />
         </Article>
       </Router>
     </App>
@@ -101,7 +101,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onGetLanguage: () => dispatch(getLanguage())
+    handleGetLanguage: () => dispatch(getLanguage()),
+    handleChangeLanguage: () => dispatch(changeLanguage())
   };
 };
 

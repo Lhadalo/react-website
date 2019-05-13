@@ -31,7 +31,7 @@ class Projects extends Component {
   }
 
   _renderProjectItems() {
-    const projects = translation.getProjects(this.props.locale);
+    const projects = translation.projects(this.props.locale);
     return _.map(projects, (project, index) => (
       <ListItem 
         key={index} 
@@ -56,7 +56,7 @@ class Projects extends Component {
   }
 
   _renderCVItems() {
-    const CV = translation.getCV(this.props.locale);
+    const CV = translation.cv(this.props.locale);
     return _.map(CV, (cvItem, index) => (
       <ListItem 
         key={index} 
@@ -78,10 +78,11 @@ class Projects extends Component {
   }
 
 	render() {
+    const { locale } = this.props;
 		return (
       <Section pad='medium'>
         <Box pad='medium'>
-            <span>{translation.pageTitle(this.props.locale)}</span>
+            <span>{translation.pageTitle(locale)}</span>
         </Box>
         <Box pad='medium'>
             <h3 style={{ fontSize: '22px', marginBottom: '10px' }}><strong>Projekt</strong></h3>
@@ -97,8 +98,8 @@ class Projects extends Component {
 
         <Box pad='medium' align='center'>
             <Anchor 
-              label='Ladda ned mitt CV som PDF' 
-              href={translation.getPDFUrl(this.props.locale)}
+              label={translation.CVLabel(locale)} 
+              href={translation.pdfUrl(locale)}
               target='_blank'
               icon={<DownloadIcon />}
               />

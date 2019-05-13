@@ -1,5 +1,7 @@
 import React from 'react';
 
+import * as translation from '../translation/footer';
+
 import Box from 'grommet/components/Box';
 
 import Anchor from 'grommet/components/Anchor';
@@ -29,28 +31,32 @@ class Footer extends React.Component {
 	}
 
 	render() {
+		const { locale } = this.props;
 		return (
 			<Box align='center' separator='top' margin='small'>
 				<Box direction='row' margin='small' responsive={false}>
 					<Anchor 
-						onMouseEnter={() => this.setActionText('Skicka mig ett mail')} 
+						onMouseEnter={() => this.setActionText(translation.mailLabel(locale))} 
 						onMouseLeave={() => this.resetActionText()}
 						href='mailto:oladahl.lel@gmail.com'
 						icon={<Mail />} />
 					<Anchor 
-						onMouseEnter={() => this.setActionText('Lägg till mig på LinkedIn')} 
+						onMouseEnter={() => this.setActionText(translation.linkedinkLabel(locale))} 
 						onMouseLeave={() => this.resetActionText()}
 						href='https://www.linkedin.com/in/ola-dahl-245209139/'
 						target='_blank'
 						icon={<LinkedIn />} />
 					<Anchor 
-						onMouseEnter={() => this.setActionText('Min GitHub-sida')} 
+						onMouseEnter={() => this.setActionText(translation.githubLabel(locale))} 
 						onMouseLeave={() => this.resetActionText()}
 						href='https://github.com/Lhadalo'
 						target='_blank'
 						icon={<Github />} />
 				</Box>
-				{this.state.actionText && <span>{this.state.actionText}</span>}
+				<Box margin={{ bottom: 'medium' }}>
+					{this.state.actionText && <span>{this.state.actionText}</span>}
+				</Box>
+				
 			</Box>
 		);
 	}

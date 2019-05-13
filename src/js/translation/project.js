@@ -1,6 +1,6 @@
 import { SWEDISH } from '../actions/action_languages';
 
-const projects = {
+const myProjects = {
 	ENGLISH: [
 			{ 
 				title: 'React Website', 
@@ -37,41 +37,41 @@ const projects = {
 		],
 };
 
-const cv = {
+const myCV = {
 	ENGLISH: [
 		{
 			title: 'Djäkne Startup Studio, Malmö',
-			desc: 'Utveckling av webbsida för Djäkne Startup Studio under sommaren 2017. Gett inblick i utmaningarna vid utveckling för konsument.',
+			desc: 'Developed a webpage for Djäkne Startup Studio in the summer. This gave me insight into communication with clients.',
 			years: '2017-2017'
 		},
 		{
-			title: 'Malmö Universitet, Malmö',
-			desc: 'Labbhandledare i laborationsdelen av utbildningen inom Java för förstaårsstudenterna.',
+			title: 'Malmö University, Malmö',
+			desc: 'Lab Supervisor in the laboratory part of the Java education, for the first-year students.',
 			years: '2016-2017'
 		},
 		{
-			title: 'Malmö Universitet, Malmö',
-			desc: 'Kandidatexamen i datavetenskap efter studier på programmet Datavetenskap och Applikationsutveckling.',
+			title: 'Malmö University, Malmö',
+			desc: 'Bachelor’s degree in computer science, after studies at the program Computer Science and Application development.',
 			years: '2015-2019'
 		},
 		{
 			title: 'Musik i Syd/Dansstationen, Malmö',
-			desc: 'Arbete som foajévärd på konserthuset Palladium. Medfört erfarenhet i konsumentkontakt samt hantering av stress.',
+			desc: 'Worked as an audience host, at the concert house Palladium in Malmö. Gave me experience in consumer contact and stress management.',
 			years: '2012-2018'
 		},
 		{
-			title: 'Lunds Universitet, Lund',
-			desc: 'Studier i vetenskapshistoria på kursen Vetenskaplig grundkurs på filosofiska institutionen. Medfört kritiskt tänkande samt erfarenhet i läsning av akademiska texter.',
+			title: 'Lunds University, Lund',
+			desc: 'Studies in philosophy at the course Philosophy: Core Studies in the Arts and Sciences.',
 			years: '2011-2012'
 		},
 		{
-			title: 'Sundsgårdens Folkhögskola, Helsingborg',
-			desc: 'Utbildning i klassisk trombon på Sundsgårdens musiklinje.',
+			title: 'Sundsgården College, Helsingborg',
+			desc: 'Studies in classical trombone at the music program at Sundsgården College.',
 			years: '2010-2011'
 		},
 		{
-			title: 'Lars-Erik Larsson-gymnasiet, Lund',
-			desc: 'Naturvetenskapligt program med musikprofil.',
+			title: 'Lars-Erik Larsson High School, Lund',
+			desc: 'Natural sciences’ programme with a music profile.',
 			years: '2007-2010'
 		},
 	],
@@ -114,30 +114,14 @@ const cv = {
 	]
 };
 
-export function pageTitle(locale) {
-	switch (locale) {
-		case SWEDISH: return 'Några projekt som jag har arbetat med under studietiden.';
-		default: return 'Personal projects that I have done during my studies';
-	}
-}
+export const pageTitle = locale => (locale === SWEDISH 
+	? 'Några projekt som jag har arbetat med under studietiden.' 
+	: 'Personal projects that I have done during my studies');
 
-export function getProjects(locale) {
-	switch (locale) {
-		case SWEDISH: return projects.SWEDISH; 
-		default: return projects.ENGLISH;
-	}
-}
+export const CVLabel = locale => (locale === SWEDISH
+	? 'Ladda ned mitt CV'
+	: 'Download my CV');
 
-export function getCV(locale) {
-	switch (locale) {
-		case SWEDISH: return cv.SWEDISH;
-		default: return cv.ENGLISH;
-	}
-}
-
-export function getPDFUrl(locale) {
-	switch (locale) {
-		case SWEDISH: return 'www.google.se';
-		default: return 'www.google.com';
-	}
-}
+export const projects = locale => (locale === SWEDISH ? myProjects.SWEDISH : myProjects.ENGLISH);
+export const cv = locale => (locale === SWEDISH ? myCV.SWEDISH : myCV.ENGLISH);
+export const pdfUrl = locale => (locale === SWEDISH ? 'swedishURL' : 'englishURL');

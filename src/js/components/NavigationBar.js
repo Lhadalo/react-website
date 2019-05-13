@@ -1,10 +1,6 @@
 import React, { Component } from 'react';
-
-import { changeLanguage } from '../actions/action_languages';
-import { connect } from 'react-redux';
 import { getLinksContent } from '../translation/links';
 
-// import { navitems } from '../links';
 // Grommet
 import Header from 'grommet/components/Header';
 import Anchor from 'grommet/components/Anchor';
@@ -32,11 +28,11 @@ class NavigationBar extends Component {
 	}
 
 	_onClickLanguage() {
-		this.props.onChangeLanguage();
+		this.props.changeLanguage();
 	}
 
 	render() {
-		const linkContent = getLinksContent(this.props.language);
+		const linkContent = getLinksContent(this.props.locale);
 
 		const links = linkContent.map(page => (
 				<Box key={page.label} pad='small'>
@@ -67,7 +63,7 @@ class NavigationBar extends Component {
 					{links}
 				</Box>
 
-				<Box margin='small' pad={{ horizontal: 'medium' }}flex={!this.state.small} justify='end' direction='row' responsive={false}>
+				<Box margin='small' pad={{ horizontal: 'medium' }} flex={!this.state.small} justify='end' direction='row' responsive={false}>
 					<Anchor label='SV' onClick={this._onClickLanguage} />
 				</Box>
 			</Header>
@@ -75,16 +71,4 @@ class NavigationBar extends Component {
 	}
 }
 
-const mapStateToProps = (state) => {
-  return {
-    language: state.language.language
-  };
-};
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-		onChangeLanguage: () => dispatch(changeLanguage()),
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(NavigationBar);
+export default NavigationBar;
