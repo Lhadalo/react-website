@@ -9,6 +9,7 @@ import Responsive from 'grommet/utils/Responsive';
 
 // Icons
 import Logo from 'grommet/components/icons/base/BrandGrommetPath';
+import { SWEDISH } from '../actions/action_languages';
 
 class NavigationBar extends Component {
 	constructor() {
@@ -17,7 +18,6 @@ class NavigationBar extends Component {
 		this._onClickLanguage = this._onClickLanguage.bind(this);
 		this.state = {};
 	}
-
 
 	componentDidMount() {
 		Responsive.start(this._onResponsive);
@@ -48,7 +48,7 @@ class NavigationBar extends Component {
 		return (
 			<Header colorIndex='light-1' fixed={true} size='small' className='Header'>
 		
-				<Box pad='small' alignContent='center'>
+				<Box alignContent='center' pad='small' style={this.state.small ? { paddingLeft: '60px' } : ''}>
 					<Anchor 
 						path='/' 
 						animateIcon={!this.state.small} 
@@ -64,7 +64,7 @@ class NavigationBar extends Component {
 				</Box>
 
 				<Box margin='small' pad={{ horizontal: 'medium' }} flex={!this.state.small} justify='end' direction='row' responsive={false}>
-					<Anchor label='SV' onClick={this._onClickLanguage} />
+					<Anchor label={this.props.locale === SWEDISH ? 'EN' : 'SV'} onClick={this._onClickLanguage} />
 				</Box>
 			</Header>
 		);
