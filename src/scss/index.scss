@@ -77,6 +77,20 @@
 	padding: 20px;
 }
 
+.flag {
+	filter: grayscale(1.0);
+	-o-transition:.5s;
+  -ms-transition:.5s;
+  -moz-transition:.5s;
+  -webkit-transition:.5s;
+  /* ...and now for the proper property */
+  transition:.5s;
+}
+
+.flag:hover {
+	filter: grayscale(0.0);
+}
+
 .subpath.grommetux-anchor--active {
 	color: black !important; 
 }

@@ -18,6 +18,11 @@ class Footer extends React.Component {
 		};
 	}
 
+	onClickFlag() {
+		this.props.changeLanguage();
+		this.setActionText(this.props.locale === 'sv' ? 'Byt till Svenska' : 'Switch to English');
+	}
+
 	setActionText(action) {
 		this.setState({
 			actionText: action
@@ -52,11 +57,19 @@ class Footer extends React.Component {
 						href='https://github.com/Lhadalo'
 						target='_blank'
 						icon={<Github />} />
+					
+					<Anchor 
+						onMouseEnter={() => this.setActionText(translation.language(locale))} 
+						onMouseLeave={() => this.resetActionText()}
+						className='flag'
+						style={{ position: 'absolute', right: '0' }}
+						onClick={() => this.onClickFlag()}
+						icon={<img src={translation.flag(locale)} alt='Language' style={{ width: '25px' }} />} 
+						/>
 				</Box>
 				<Box margin={{ bottom: 'medium' }}>
 					{this.state.actionText && <span>{this.state.actionText}</span>}
 				</Box>
-				
 			</Box>
 		);
 	}

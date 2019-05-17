@@ -69,10 +69,10 @@ class Main extends Component {
         <App centered={true} style={style}>
           <Router>
             <Article>
-              <NavigationBar locale={locale} changeLanguage={this.props.handleChangeLanguage} />
+              <NavigationBar locale={locale} />
               <Routes />
               <Footer locale={locale} />
-              <BottomBar locale={locale} />
+              <BottomBar locale={locale} changeLanguage={this.props.handleChangeLanguage} />
             </Article>
           </Router>
         </App>
@@ -83,9 +83,9 @@ class Main extends Component {
     <App centered={true}>
       <Router>
         <Article>
-          <NavigationBar locale={locale} changeLanguage={this.props.handleChangeLanguage} />
+          <NavigationBar locale={locale} />
           <Routes />
-          <Footer locale={locale} />
+          <Footer locale={locale} changeLanguage={this.props.handleChangeLanguage} />
         </Article>
       </Router>
     </App>

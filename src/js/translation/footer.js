@@ -11,3 +11,11 @@ export const linkedinkLabel = locale => (locale === SWEDISH
 export const githubLabel = locale => (locale === SWEDISH
 	? 'Min GitHub-sida'
 	: 'My GitHub Page');
+
+export const language = locale => (locale === SWEDISH
+	? 'Switch to English'
+	: 'Byt till Svenska');
+
+export const flag = locale => (locale === SWEDISH
+	? 'https://lipis.github.io/flag-icon-css/flags/4x3/gb.svg'
+	: 'https://lipis.github.io/flag-icon-css/flags/4x3/se.svg');	
