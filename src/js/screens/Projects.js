@@ -23,7 +23,11 @@ class Projects extends Component {
 
   componentDidMount() {
     window.scrollTo(0, 0);
-    Responsive.start(this._onResponsive);
+    this._responsive = Responsive.start(this._onResponsive);
+  }
+
+  componentWillUnmount() {
+    this._responsive.stop();
   }
 
   _onResponsive(small) {

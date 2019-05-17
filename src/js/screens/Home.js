@@ -25,7 +25,11 @@ class Home extends Component {
   }
   
   componentDidMount() {
-    Responsive.start(this._onResponsive);
+    this._responsive = Responsive.start(this._onResponsive);
+  }
+
+  componentWillUnmount() {
+    this._responsive.stop();
   }
 
   _onResponsive(small) {
