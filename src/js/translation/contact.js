@@ -58,3 +58,4 @@ export const formNameError = locale => (locale === SWEDISH ? 'Vänligen ange dit
 export const formEmailError = locale => (locale === SWEDISH ? 'Vänligen ange din epost' : 'Please enter your email');
 export const formMessageError = locale => (locale === SWEDISH ? 'Vänligen skriv ett meddelande' : 'Please enter a message');
 export const formSubmitButton = locale => (locale === SWEDISH ? 'Skicka' : 'Send');
+export const toastFeedback = locale => (locale === SWEDISH ? 'Ditt meddelande har skickats! Jag hör av mig så fort som möjligt.' : 'Your message was sent. I will reply as soon as possible');

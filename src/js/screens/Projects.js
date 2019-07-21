@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import _ from 'lodash';
 import * as translation from '../translation/project';
+
+
 // Grommet
 import Box from 'grommet/components/Box';
 import Section from 'grommet/components/Section';
@@ -15,15 +17,16 @@ import DownloadIcon from 'grommet/components/icons/base/DocumentPdf';
 class Projects extends Component {
   constructor() {
     super();
+    this._language = null;
     this._onResponsive = this._onResponsive.bind(this);
     this.state = {
-      small: false
+      small: false,
     };
   }
 
   componentDidMount() {
-    window.scrollTo(0, 0);
-    this._responsive = Responsive.start(this._onResponsive);
+    // window.scrollTo(0, 0);
+    this._responsive = Responsive.start(this._onResponsive); 
   }
 
   componentWillUnmount() {

@@ -21,7 +21,7 @@ class Home extends Component {
   }
 
   componentWillMount() {
-    window.scrollTo(0, 0);
+    // window.scrollTo(0, 0);
   }
   
   componentDidMount() {

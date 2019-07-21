@@ -10,13 +10,23 @@ const myProjects = {
 			{
 				title: 'Hooky', 
 				desc: 'During spring 2017 we did a school project at Djäkne Startup. We were some people that developed a website in React. The website worked as a inspiration-platform where companies could submit food products.', 
-				links: [{ linkName: 'Github', linkSrc: 'https://github.com/Lhadalo/projekt2-p16' }] 
+				links: [{ linkName: 'Github', linkSrc: 'https://github.com/Lhadalo/Hooky' }] 
 			},
 			{
 				title: 'Show Report',
 				desc: 'I made a simple app to send formatted text as a report for multiple recipients. This app was used by Parkteatern in Stockholm during some of their performances. The app is written in Kotlin and uses Realm as a database.',
 				links: [{ linkName: 'Github', linkSrc: 'https://github.com/Lhadalo/rapportering' }]
-			}
+			},
+			{
+				title: 'Stage Manager',
+				desc: 'English Description',
+				links: [{ linkName: 'Github', linkSrc: 'https://github.com/Lhadalo/stage-manager' }]
+			},
+			{
+				title: 'Numerare',
+				desc: 'Svensk Beskrivning',
+				links: [{ linkName: 'Github', linkSrc: 'https://github.com/Lhadalo/numerare' }]
+			},
 		],
 	SWEDISH: [
 			{ 
@@ -27,13 +37,24 @@ const myProjects = {
 			{
 				title: 'Hooky', 
 				desc: 'Under vårterminen 2017 gjorde vi projekt ute på företag med skolan. Vi var ett gäng som gjorde en webbsida i React åt Djäkne i Malmö. Sidan fungerade som en inspirationsplatform, där producenter kunde lägga upp matprodukter.', 
-				links: [{ linkName: 'Github', linkSrc: 'https://github.com/Lhadalo/projekt2-p16' }] 
+				links: [{ linkName: 'Github', linkSrc: 'https://github.com/Lhadalo/Hooky' }] 
 			},
 			{
 				title: 'Föreställningsrapport',
 				desc: 'Jag gjorde en enkel app för att skicka en formaterad rapport som SMS till ett antal mottagare. Denna appen användes av Parkteatern i Stockholm under vissa av deras föreställningar. Appen är skriven i Kotlin och använder Realm som databas.',
 				links: [{ linkName: 'Github', linkSrc: 'https://github.com/Lhadalo/rapportering' }]
-			}
+			}, 
+			{
+				title: 'Stage Manager',
+				desc: 'Svensk Beskrivning',
+				links: [{ linkName: 'Github', linkSrc: 'https://github.com/Lhadalo/stage-manager' }]
+			},
+			{
+				title: 'Numerare',
+				desc: 'Svensk Beskrivning',
+				links: [{ linkName: 'Github', linkSrc: 'https://github.com/Lhadalo/numerare' }]
+			},
+			
 		],
 };
 

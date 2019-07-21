@@ -1,7 +1,7 @@
 import { GET_LANGUAGE, CHANGE_LANGUAGE } from '../actions/action_languages';
 
 const initialState = {
-	language: 'en-US'
+	language: null
 };
 
 const getLanguage = (state, action) => {

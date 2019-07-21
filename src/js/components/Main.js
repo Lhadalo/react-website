@@ -25,7 +25,7 @@ class Main extends Component {
     this.state = {
       width: window.innerWidth,
     };
-
+    this._languageChanged = false;
     this.handleWindowSizeChange = this.handleWindowSizeChange.bind(this);
   }
 
@@ -34,10 +34,19 @@ class Main extends Component {
     window.addEventListener('resize', this.handleWindowSizeChange);
   }
 
+  shouldComponentUpdate(nextProps, nextState) {
+    console.log(this.props.locale);
+    console.log(nextProps.locale);
+    if (this.props.locale !== nextProps.locale && this.props.locale !== null) {
+      console.log('Language Changed');
+    }
+    return true;
+  }
+
   componentWillUnmount() {
     window.removeEventListener('resize', this.handleWindowSizeChange);
   }
-
+  
   handleWindowSizeChange() {
     this.setState({
       width: window.innerWidth
@@ -50,6 +59,7 @@ class Main extends Component {
     const style = {
       marginBottom: '60px',
     };
+    console.log(this._languageChanged);
     
     const Routes = withRouter(({ location }) => (
       <TransitionGroup exit={false}>
