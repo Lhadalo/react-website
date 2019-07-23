@@ -5,4 +5,11 @@ export function createReducer(initialState, handlers) {
 		return { ...state, ...handler(state, action) };
 	};
 }
-export default { createReducer };
+
+export const updateObject = (oldObject, updatedProperties) => {
+	return {
+		...oldObject,
+		...updatedProperties
+	};
+};
+

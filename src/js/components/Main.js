@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch, withRouter } from 'react-router-dom';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
-
-import { getLanguage, changeLanguage } from '../actions/action_languages';
 import { connect } from 'react-redux';
+
+import { authCheckState } from '../actions/action_auth';
+import { getLanguage, changeLanguage } from '../actions/action_languages';
 
 // Grommet
 import App from 'grommet/components/App';
@@ -13,7 +14,7 @@ import Article from 'grommet/components/Article';
 import Home from '../screens/Home';
 import Projects from '../screens/Projects';
 import Contact from '../screens/Contact';
-import Admin from '../screens/Admin';
+import Auth from '../screens/Auth';
 
 // Components
 import NavigationBar from './NavigationBar';
@@ -32,17 +33,18 @@ class Main extends Component {
 
   componentWillMount() {
     this.props.handleGetLanguage();
+    this.props.handleAuthCheckState();
     window.addEventListener('resize', this.handleWindowSizeChange);
   }
 
-  shouldComponentUpdate(nextProps, nextState) {
-    console.log(this.props.locale);
-    console.log(nextProps.locale);
-    if (this.props.locale !== nextProps.locale && this.props.locale !== null) {
-      console.log('Language Changed');
-    }
-    return true;
-  }
+  // shouldComponentUpdate(nextProps, nextState) {
+  //   console.log(this.props.locale);
+  //   console.log(nextProps.locale);
+  //   if (this.props.locale !== nextProps.locale && this.props.locale !== null) {
+  //     console.log('Language Changed');
+  //   }
+  //   return true;
+  // }
 
   componentWillUnmount() {
     window.removeEventListener('resize', this.handleWindowSizeChange);
@@ -60,7 +62,6 @@ class Main extends Component {
     const style = {
       marginBottom: '60px',
     };
-    console.log(this._languageChanged);
     
     const Routes = withRouter(({ location }) => (
       <TransitionGroup exit={false}>
@@ -70,7 +71,7 @@ class Main extends Component {
             <Route path='/home' render={() => <Home locale={locale} />} />
             <Route path='/projects' render={() => <Projects locale={locale} />} />
             <Route path='/contact' render={() => <Contact locale={locale} />} />
-            <Route path='/admin' component={<Admin />} />
+            <Route path='/admin' component={Auth} />
           </Switch>
         </CSSTransition>
       </TransitionGroup>
@@ -114,7 +115,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     handleGetLanguage: () => dispatch(getLanguage()),
-    handleChangeLanguage: () => dispatch(changeLanguage())
+    handleChangeLanguage: () => dispatch(changeLanguage()),
+    handleAuthCheckState: () => dispatch(authCheckState())
   };
 };
 
