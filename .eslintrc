@@ -48,6 +48,7 @@
     "no-plusplus": 0,
     "global-require": 0,
     "object-property-newline": 0,
-    "no-trailing-spaces":"off"
+    "no-trailing-spaces":"off",
+    "padded-blocks":"off"
   }
 }

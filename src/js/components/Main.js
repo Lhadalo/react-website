@@ -13,6 +13,7 @@ import Article from 'grommet/components/Article';
 import Home from '../screens/Home';
 import Projects from '../screens/Projects';
 import Contact from '../screens/Contact';
+import Admin from '../screens/Admin';
 
 // Components
 import NavigationBar from './NavigationBar';
@@ -69,6 +70,7 @@ class Main extends Component {
             <Route path='/home' render={() => <Home locale={locale} />} />
             <Route path='/projects' render={() => <Projects locale={locale} />} />
             <Route path='/contact' render={() => <Contact locale={locale} />} />
+            <Route path='/admin' component={<Admin />} />
           </Switch>
         </CSSTransition>
       </TransitionGroup>
